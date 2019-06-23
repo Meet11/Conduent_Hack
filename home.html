@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>home</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><b><a href="index.html">Pace<span class="logo_colour">Pay</span></a></b></h1>
+          <h2><b>A step towards open governance</b></h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="{{url_for('home')}}">Home</a></li>
+          <li><a href="{{url_for('gov_reg')}}">Government Login</a></li>
+          <li><a href="{{url_for('cont_reg')}}">Contractor Login</a></li>
+          <li><a href="{{url_for('ver_login')}}">Verifier Login</a></li>
+          <li><a href="{{url_for('tenders')}}">View Tenders</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+        <div id="site_content">
+      <!-- <div style="height: 200px"></div> -->
+      <div id="content">
+        <div>
+            <h1><b> Problems with Right to Information are:</b></h1>
+        <!-- insert the page content here -->
+
+<br>
+<br>
+<b>a)</b> The access to information is cumbersome and requires a long process to get hold of information. Even for the information that has no national security implications
+<br><br>  
+<b>b)</b> Even though auditing the government activities might be possible but still reviewing the documents (got through Right to Information requires time, money and expertise – something not easy to acquire/invest by the general public).
+<br>
+<br>
+The blockchain and smart contracts can enable an open governance framework that can facilitate citizens oversight on government functions that is easy to carry out with no associated financial costs.
+<h3>RTI statistical Data</h3>
+ <br>
+<br>  
+        </div>
+     <div>
+       
+     </div>   
+    <hr>
+
+        <h1><b>Fair and Transparent Blockchain based Tendering Framework - A Step Towards Open Governance</b></h1>
+        <p>
+            <br>
+          <h3><b>The objective of this project is to ensure transparent tendering process using Smart Contracts.</b></h3>
+            <br>
+<b>Conditions to ensure fair and transparent tendering process:</b><br>
+<br>
+<b>1.</b> Once the government opens a tender with certain description they cannot change it. Each tender includes evaluation criteria to select the best possible bid. It is not fair for the government to change the criteria to favour a particular commercial organization.<br><br>
+<b>2.</b>Bids must be kept confidential until the tender closes. Bids are not be tampered with. Organizations shouldn’t be able to find out if others have placed a bid or not.<br><br>
+<b>3.</b>The government can only publish the bids after the tender is closed. Bids can be made public so that losing organizations, citizens, and interested parties can evaluate the whole bidding process.<br><br>
+<b>4.</b>The government should not be able to reject proposals based on their biases. The process should ensure confidentiality, privacy, and integrity. The tender process should be auditable and the decisions should be supported by evidence.<br>
+</p>
+      </div>
+    </div>
+</body>
+</html>

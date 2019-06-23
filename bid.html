@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Government login</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><b><a href="index.html">Pace<span class="logo_colour">Pay</span></a></b></h1>
+          <h2><b>A step towards open governance</b></h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="{{url_for('home')}}">Home</a></li>
+          <li><a href="{{url_for('gov_reg')}}">Government Login</a></li>
+          <li class="selected"><a href="{{url_for('cont_reg')}}">Contractor Login</a></li>
+          <li><a href="{{url_for('ver_login')}}">Verifier Login</a></li>
+          <li><a href="{{url_for('tenders')}}">View Tenders</a></li>
+        </ul>
+      </div>
+      <div style="margin-left: 29.25vw; margin-top:20px">
+             <h2><b>Bid</b></h2>
+   
+      </div>
+     
+    </div><br>
+    <div style="margin-left: 45vw;  "><p style="margin-right: 12vw;font-size: 1.5vw; color: #E7746F"><b>Bid:</b></p></div>
+     <div style="border: 1px solid ; width: 30vw; margin-left: 30vw">
+      <!--Format-->
+      <div style="margin-left: 2vw">
+        <!-- <h3><b>Tender1:</b></h3> -->
+        {% for tender in tenders  %}
+        <div style="margin-left: 2vw">
+        <h5 id='tender_sector'></h5>
+        <h5 id='loc'></h5>
+        Category: 
+        <h5><b>{{tender.tender_category}}</b> </h5>
+        Start Date:
+        <h5><b>{{tender.tender_start_date}}</b> </h5>
+        End Date:
+        <h5><b>{{tender.tender_close_date}}</b> </h5>
+
+        {% if tender.tender_close_date > time %}
+        <!-- documents submitted while account creation-->
+        <div>
+        <input type="text" name="bid_amount" id="amount_bit"><br>
+        <button id="place_bid">Place Bid</button>
+        </div>
+        {% else %}
+        <div style="visibility: hidden;">
+        <input type="text" name="bid_amount" id="amount_bit"><br>
+        <button id="place_bid">Place Bid</button>
+        </div>
+        {% endif %}
+        
+        
+      </div>
+      {% endfor %}
+      <!-- documents submitted while account creation-->
+      
+
+      
+
+       </div>
+      <!--line after each contract-->     
+    </div>
+    
+    <script>
+      // var Web3 = require('web3');
+      // var web3 = new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
+      // web3.eth.defaultAccount = web3.eth.accounts[9];
+
+
+      var web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
+      var defaultAccount_is = web3.eth.accounts[0];
+      var contractClass = new web3.eth.Contract([{"constant": true,"inputs": [],"name": "startDate","outputs": [{"name": "","type": "string"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [{"name": "bidder","type": "address"}],"name": "verifyBidder","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "tenderMinVal","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "tenderSector","outputs": [{"name": "","type": "string"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "location","outputs": [{"name": "","type": "string"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "","type": "uint256"}],"name": "bidAddress","outputs": [{"name": "bidder","type": "address"},{"name": "val","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "sort","outputs": [{"components": [{"name": "bidder","type": "address"},{"name": "val","type": "uint256"}],"name": "","type": "tuple"}],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "owner","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [{"name": "_bidPrice","type": "uint256"}],"name": "performBid","outputs": [{"name": "","type": "bool"}],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "refNumber","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "getbidder","outputs": [{"name": "","type": "address[]"},{"name": "","type": "uint256[]"}],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": false,"inputs": [],"name": "setWinner","outputs": [{"name": "","type": "address"},{"name": "","type": "uint256"}],"payable": false,"stateMutability": "nonpayable","type": "function"},{"inputs": [{"name": "_tenderSector","type": "string"},{"name": "_location","type": "string"},{"name": "val","type": "uint256"},{"name": "refNo","type": "uint256"},{"name": "_startDate","type": "string"}],"payable": false,"stateMutability": "nonpayable","type": "constructor"},{"anonymous": false,"inputs": [{"indexed": false,"name": "bidder_address","type": "address[]"},{"indexed": false,"name": "val_int","type": "uint256[]"}],"name": "GetBidder","type": "event"},{"anonymous": false,"inputs": [{"indexed": false,"name": "_address","type": "address"},{"indexed": false,"name": "_value","type": "uint256"}],"name": "Winner","type": "event"}],'0xC1aB9e7feedB0e91D7a88FBD7951F26c0a0c2829',{defaultAccount: defaultAccount_is, defaultGasPrice:'20000000000'});
+      // contractClass.options.from = web3.eth.defaultAccount;
+        
+        contractClass.methods.tenderSector().call(function(err,res){
+
+          if(!err){
+            $("#tender_sector").html('Tender Sector is: ' + res);
+          }
+            
+         
+          });
+        contractClass.methods.location().call(function(err,res){
+
+          if(!err){
+            $("#loc").html('Location is: ' + res);
+          }
+            
+         
+          });
+        $('#place_bid').click(function(){
+            var id_id = '0x7Ccd38d51831A0939c8a7668EEB405A1f3CA2CEf';
+          
+            contractClass.methods.performBid($('#amount_bit').val()).send({from: '0x7Ccd38d51831A0939c8a7668EEB405A1f3CA2CEf', gas:2000000}) });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    
+</body>
+</html>

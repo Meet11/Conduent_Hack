@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Government login</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><b><a href="index.html">Pace<span class="logo_colour">Pay</span></a></b></h1>
+          <h2><b>A step towards open governance</b></h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="{{url_for('home')}}">Home</a></li>
+          <li class="selected"><a href="{{url_for('gov_reg')}}">Government Login</a></li>
+          <li><a href="{{url_for('cont_reg')}}">Contractor Login</a></li>
+          <li><a href="{{url_for('ver_login')}}">Verifier Login</a></li>
+          <li><a href="{{url_for('tenders')}}">View Tenders</a></li>
+        </ul>
+      </div>
+      <div style="margin-left: 29.25vw; margin-top:20px">
+             <h2><b>Update contract</b></h2>
+   
+      </div>
+     
+    </div><br>
+    <div style="margin-left: 45vw;  "><p style="margin-right: 12vw;font-size: 1.5vw; color: #E7746F"><b>Update Contract:</b></p></div>
+    <div style=" margin-top:1vw;  font-size: 1.5vw ; border: 1px solid white; margin-left: 35.5vw; width:30vw ;border: 1px solid">
+      
+             <br>
+      <form  style="margin-left: 2vw; font-size: 1vw" method="POST" action="{{url_for('update')}}">
+        <p style="margin-right: 12vw; font-size: 1vw;">Key:</p>
+        <input type="text" name="id" style=" width:20vw; height:1.5vw; " required="true">
+        <br>
+        <br> Update Closing Date:<br>
+        <input type="Date" name="closing_date" style=" width:20vw; height:1.5vw; " required="true"><br><br>
+        <input type="submit" name="Login" value="submit"  style=" background-color: #E7746F;width:5vw; height:2vw; color: white">
+        <br>
+
+      </form>
+        <br>
+    </div>
+   
+</body>
+</html>
